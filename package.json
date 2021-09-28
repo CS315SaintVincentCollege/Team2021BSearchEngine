@@ -1,0 +1,19 @@
+{
+  "name": "team2021bsearchengine",
+  "version": "1.0.0",
+  "description": "Search Engine Project for CS315",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CS315SaintVincentCollege/Team2021BSearchEngine.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CS315SaintVincentCollege/Team2021BSearchEngine/issues"
+  },
+  "homepage": "https://github.com/CS315SaintVincentCollege/Team2021BSearchEngine#readme"
+}

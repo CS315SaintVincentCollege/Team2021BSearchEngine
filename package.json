@@ -2,18 +2,27 @@
   "name": "team2021bsearchengine",
   "version": "1.0.0",
   "description": "Search Engine Project for CS315",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/CS315SaintVincentCollege/Team2021BSearchEngine.git"
   },
-  "author": "",
+  "author": "Nate Fabian, Joseph ",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/CS315SaintVincentCollege/Team2021BSearchEngine/issues"
   },
-  "homepage": "https://github.com/CS315SaintVincentCollege/Team2021BSearchEngine#readme"
+  "homepage": "https://github.com/CS315SaintVincentCollege/Team2021BSearchEngine#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "linebyline": "^1.3.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/node": "^16.10.2"
+  }
 }

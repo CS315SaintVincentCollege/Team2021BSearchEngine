@@ -1,9 +1,16 @@
 const express = require('express');
 const SearchForKeyword = require('./UtilityFunction.js').SearchForKeyword;
+const fs = require('fs');
 
 let app = express();
 
 console.clear();
+
+app.get('/', (request, resolution)=>{
+    let page = fs.readFileSync('Public/index.html');
+    resolution.sendFile(page);
+    resolution.sendStatus(200);
+})
 
 //localhost:3002/api/search/?keyword1=word
 app.get('/api/search/', async (request, resolution)=>{

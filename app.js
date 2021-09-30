@@ -3,6 +3,8 @@ const SearchForKeyword = require('./UtilityFunction.js').SearchForKeyword;
 
 let app = express();
 
+console.clear();
+
 app.get('/', async (request, resolution)=>{
     //console.log(Object.keys(request));
     //console.log(Object.keys(resolution));

@@ -14,31 +14,36 @@ function SearchForKeyword(fileName, KeywordArray) {
         inputFile.on('line', (line, lineCount, byteCount) => {
             ///console.log('entering line read');
             //split out keywords
-            let lineArray = line.split('%');
+            let lineKeywords = line.split('%');
+            let breakout = true;
             //loop though every keyword skipping the first as it has the link and keyword 
-            for (let i = 1; i < lineArray.length; i++) {
-                console.log("search lines");
+            for (let i = 1; i < lineKeywords.length; i++) {
+                console.log(`search line ${i}`);
                 //loop though every keyword and check for matches
                 for (let j = 0; j < KeywordArray.length; j++) {
                     console.log('search keywords', j, KeywordArray[j]);
                     //if the keyword matches the list of keywords add line to array and break
-                    if (lineArray[i].indexOf(KeywordArray[j]) != -1) {
-                        console.log(`Match Found with ${lineArray[i].indexOf(KeywordArray[j])} with ${lineArray[i]}`);
+                    if (lineKeywords[i].indexOf(KeywordArray[j]) != -1 && breakout) {
+                        console.log(`Match Found with ${lineKeywords[i] == KeywordArray[j]} with ${lineKeywords[i]}`);
                         //we got a hit, add the while line to the array
-                        let formattedLine = lineArray[0].split('|');
-                        lineArray.shift();
-                        let fullLine = formattedLine.concat(lineArray);
+                        let formattedLine = lineKeywords[0].split('|');
+                        lineKeywords.shift();
+                        let fullLine = formattedLine.concat(lineKeywords);
                         MatchesArray.push(fullLine);
                         console.log(fullLine);
+                        breakout = false;
                     }
                 }
             }
-            console.log('promise Resolving');
-            //with searching done resolve promise
-            resolve(MatchesArray);
         }).on('error', (e) => {
             console.log('we hit an error oh no', e);
             reject('on no its broken');
+        }).on('end', ()=>{
+            console.log(`READ FILE ENDED`);
+            
+            console.log('promise Resolving');
+            //with searching done resolve promise
+            resolve(MatchesArray);
         })
     });
 

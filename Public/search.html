@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Search</title>
+    <script type="text/javascript">
+        function validate(thisform) {
+            if ((thisform.Key1.value == "") && (thisform.Key2.value == "") && (thisform.Key3.value == "")) {
+                alert("No keywords or phrases entered.  Please try again.")
+                thisform.Key1.focus()
+                return false
+            }
+            else
+                return true
+        }
+    </script>
+</head>
+
+<body>
+
+    <h2>Search the CIS Department Web Pages</h2>
+
+    <form method="get" action="http://localhost:8080/api/search">
+
+        <input type="text" id="searchkey" name="searchkey" size="36" maxlength="48" />
+        <strong>Keyword or phrase</strong>
+
+        <p>
+            <input type="submit" value="Submit" />
+            <input type="reset" value="Clear the form" />
+        </p>
+    </form>
+
+</body>
+
+</html>

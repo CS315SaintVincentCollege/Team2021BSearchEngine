@@ -4,6 +4,16 @@
 <head>
     <meta charset="utf-8">
     <title>Search</title>
+    <script type="text/javascript">
+        function validate(thisform) {
+            if ((thisform.Key1.value == "") && (thisform.Key2.value == "") && (thisform.Key3.value == "")) {
+                alert("No keywords or phrases entered.  Please try again.")
+                thisform.Key1.focus()
+                return false
+            }
+            else
+                return true
+        }
     </script>
 </head>
 

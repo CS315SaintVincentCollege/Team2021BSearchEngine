@@ -5,7 +5,8 @@ let app = express();
 
 console.clear();
 
-app.get('/', async (request, resolution)=>{
+//localhost:3002/api/search/?keyword1=word
+app.get('/api/search/', async (request, resolution)=>{
     //console.log(Object.keys(request));
     //console.log(Object.keys(resolution));
 

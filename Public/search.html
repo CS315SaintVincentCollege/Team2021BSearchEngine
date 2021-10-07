@@ -20,13 +20,23 @@
         function getJsonResults() {
             let formElement = document.getElementById('SearchForm');
             let formData = new FormData(formElement);
-            let searchTerm = formData.get('searchkey');
+            console.log(`full key is: ${formData.get('searchkey')}`);
+            let searchKeys = formData.get('searchkey').split(' ');
+            console.log(`split keys are ${searchKeys}`);
             return new Promise(async (resolve, reject)=>{
-                let results = await fetch(`http://localhost:8080/api/search/?Search=${searchTerm}`);
-                if (results != []) {
-                    resolve(await results.json());
+                let searchTerm =  "/?";
+                for (let i = 0; i < searchKeys.length; i++) {
+                    searchTerm += `term${i}=${searchKeys[i]}&`
+                }
+                console.log(searchTerm);
+                let results = await fetch(`http://localhost:8081/api/search${searchTerm}`);
+                results = await results.json();
+                console.log(results);
+                if (results.length != 0) {
+                    console.log("json parse is valid result");
+                    resolve(results);
                 } else {
-                    reject({"errorCode": -1, "Message": "no valid results from search term"});
+                    resolve([]);
                 }
             }) 
         }
@@ -35,6 +45,31 @@
             let data = await getJsonResults();
             console.log(data);
             // for each loop here with data
+
+            let searchItems = document.getElementById('SearchItems');
+            if (data.length != 0) {
+                console.log("we have search result");
+                
+
+                searchItems.innerHTML = "";
+
+                data.forEach(element => {
+                    let row = document.createElement('li');
+                    let link = document.createElement('a');
+                    link.href = element[0];
+                    link.innerText = element[1];
+                    row.appendChild(link);
+                    searchItems.appendChild(row);
+                });
+            } else {
+                console.log("we hit the error check");
+                searchItems.innerHTML = "<h3>We didnt find anything please try again ;)</h3>";
+            }
+            
+        }
+
+        function clearSearch() {
+            document.getElementById('SearchItems').innerHTML = "";
         }
     </script>
 </head>
@@ -50,9 +85,14 @@
 
         <p>
             <button type="button" onclick="fillOutSearchResults()">Submit</button>
-            <input type="reset" value="Clear the form" />
+            <input onclick="clearSearch()" type="reset" value="Clear the form" />
         </p>
     </form>
+
+    <div>
+        <ul id="SearchItems">
+        </ul>
+    </div>
 
 </body>
 

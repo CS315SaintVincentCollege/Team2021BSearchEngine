@@ -12,7 +12,29 @@
                 return false
             }
             else
+            {
                 return true
+            }
+        }
+
+        function getJsonResults() {
+            let formElement = document.getElementById('SearchForm');
+            let formData = new FormData(formElement);
+            let searchTerm = formData.get('searchkey');
+            return new Promise(async (resolve, reject)=>{
+                let results = await fetch(`http://localhost:8080/api/search/?Search=${searchTerm}`);
+                if (results != []) {
+                    resolve(await results.json());
+                } else {
+                    reject({"errorCode": -1, "Message": "no valid results from search term"});
+                }
+            }) 
+        }
+
+        async function fillOutSearchResults() {
+            let data = await getJsonResults();
+            console.log(data);
+            // for each loop here with data
         }
     </script>
 </head>
@@ -21,13 +43,13 @@
 
     <h2>Search the CIS Department Web Pages</h2>
 
-    <form method="get" action="http://localhost:8080/api/search">
+    <form id="SearchForm"> <!--  method="GET" action="http://localhost:8080/api/search"> -->
 
         <input type="text" id="searchkey" name="searchkey" size="36" maxlength="48" />
         <strong>Keyword or phrase</strong>
 
         <p>
-            <input type="submit" value="Submit" />
+            <button type="button" onclick="fillOutSearchResults()">Submit</button>
             <input type="reset" value="Clear the form" />
         </p>
     </form>

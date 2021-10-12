@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+body {
+    background-color: DarkGray;
+  }
+
+h2{
+    text-align: center;
+    margin: auto;
+    width: 50%;
+    border: 3px solid DarkGrey;
+    padding: 10px;
+  }
+
+form{
+    text-align: center;
+}

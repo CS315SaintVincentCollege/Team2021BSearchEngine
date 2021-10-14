@@ -1,14 +1,13 @@
 @charset "utf-8";
 
 body {
-    background-color: DarkGray;
+    background-color: gray;
   }
 
 h2{
     text-align: center;
     margin: auto;
     width: 50%;
-    border: 3px solid DarkGrey;
     padding: 10px;
   }
 
@@ -26,13 +25,14 @@ li, a, button {
 
 header{
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   padding: 30px 10%;
 }
 
 .logo{
   cursor:pointer;
+  margin-right: auto;
 }
 
 .nav_links{

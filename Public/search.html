@@ -75,6 +75,17 @@
     </script>
 </head>
 
+<header>
+    <img class="logo" src="images/CIS-Logo.png" alt="logo">
+    <nav>
+        <ul class="nav_links">
+            <li><a href="/"> <span class="button">Home</span></a></li>
+            <!--<a href="/search.html"> <span class="button">Search Page</span></a>-->
+        </ul>
+    </nav>
+    <a class="cta" href="/search.html"><button>Search</button></a>
+</header>    
+
 <body>
 
     <h2>Search the CIS Department Web Pages</h2>
@@ -85,7 +96,7 @@
 
         <p>
             <button type="button" onclick="fillOutSearchResults()">Submit</button>
-            <input onclick="clearSearch()" type="reset" value="Clear the form" />
+            <button onclick="clearSearch()" type="reset">Clear the Form</button>
         </p>
     </form>
 

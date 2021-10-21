@@ -31,11 +31,22 @@ app.get('/api/search/', async (request, resolution)=>{
 
     //console.log(request.query);
     let queryParams = Object.values(request.query);
-    //TODO: search function still not working hitting twice on same peram
+    if (queryParams == "") {
+        console.log("you didnt anyting");
+        resolution.send(JSON.stringify({undefined}));
+        return;
+    }
     let result = await SearchForKeyword('testFile.txt', queryParams);
 
     resolution.send(result);
 });
+
+app.get('/images/:name', (request, resolution)=>{
+    let filename = request.params.name;
+    let fileData = fs.readFileSync('./Images/' + filename);
+    console.log(`filename ${filename}`);
+    resolution.send(fileData);
+})
 
 app.listen(8081);
 

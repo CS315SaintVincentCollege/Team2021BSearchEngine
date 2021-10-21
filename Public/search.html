@@ -30,14 +30,13 @@
                 }
                 console.log(searchTerm);
                 let results = await fetch(`http://localhost:8081/api/search${searchTerm}`);
+                
+                
                 results = await results.json();
-                console.log(results);
-                if (results.length != 0) {
-                    console.log("json parse is valid result");
-                    resolve(results);
-                } else {
-                    resolve([]);
-                }
+                
+                console.log("json parse is valid result");
+                resolve(results);
+                
             })
         }
 
@@ -47,9 +46,9 @@
             // for each loop here with data
 
             let searchItems = document.getElementById('SearchItems');
-            if (data.length != 0) {
+            if (Object.keys(data) != 0) {
                 console.log("we have search result");
-
+                console.log(data);
 
                 searchItems.innerHTML = "";
 
@@ -115,7 +114,7 @@
                 </p>
                 <p>
                     <button type="button" onclick="fillOutSearchResults()">Submit</button>
-                    <input onclick="clearSearch()" type="reset" value="Clear the form" />
+                    <input class="clearTheForm" onclick="clearSearch()" type="reset" value="Clear the form" />
                 </p>
             </form>
         </div>

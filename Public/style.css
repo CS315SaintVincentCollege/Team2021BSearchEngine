@@ -1,5 +1,9 @@
-
 @charset "utf-8";
+
+
+h1, h2, h3, h4, h5 {
+  margin: 0;
+}
 
 body {
     background-color: gray;
@@ -16,13 +20,20 @@ form{
     text-align: center;
 }
 
-li, a, button {
+li, button {
   font-family: 100%/1.4 Arial, Verdana, Helvetica;
   font-weight: 500;
   font-size: 16px;
   color: #edf0f1;
   text-decoration: none;
 }
+ header a {
+  font-family: 100%/1.4 Arial, Verdana, Helvetica;
+  font-weight: 500;
+  font-size: 16px;
+  color: #edf0f1;
+  text-decoration: none;
+ }
 
 header{
   display: flex;
@@ -64,6 +75,7 @@ button{
 
 button:hover{
   background-color: rgba(0,136,169,0.8);
+}
 
 body div {
     box-sizing: border-box;
@@ -76,9 +88,6 @@ body {
     padding: 0;
 }
 
-h1, h2, h3, h4, h5 {
-    margin: 0;
-}
 
 .FormHolder {
     margin: 0 auto;
@@ -91,22 +100,24 @@ h1, h2, h3, h4, h5 {
 .SearchResultItem {
     width: 100%;
     text-align: left;
-    animation: SlideIn 1500ms ease-out 0s 1;
+    padding: 0.5em;
+    font-size: 1.5em;
 }
-
-
 
 #SearchItems {
     width: 100%;
 }
 
-@keyframes SlideIn {
-    0% {
-        transform: translate(-100vw);
-    }
+.clearTheForm{
+  padding: 9px 25px;
+background-color: rgba(0,136,169,1);
+border: none;
+border-radius: 50px;
+cursor: pointer;
+transition: all 0.3s ease 0s;
+font-weight: 500;
+font-size: 16px;
+color: #edf0f1;
+text-decoration: none;
 
-    100% {
-        transform: translate(0vw);
-    }
-
-}
+} 

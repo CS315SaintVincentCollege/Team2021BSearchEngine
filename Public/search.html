@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>Search</title>
+    <link rel="stylesheet" href="Public/style.css">
     <script type="text/javascript">
         function validate(thisform) {
             if ((thisform.Key1.value == "") && (thisform.Key2.value == "") && (thisform.Key3.value == "")) {
@@ -11,8 +12,7 @@
                 thisform.Key1.focus()
                 return false
             }
-            else
-            {
+            else {
                 return true
             }
         }
@@ -23,22 +23,21 @@
             console.log(`full key is: ${formData.get('searchkey')}`);
             let searchKeys = formData.get('searchkey').split(' ');
             console.log(`split keys are ${searchKeys}`);
-            return new Promise(async (resolve, reject)=>{
-                let searchTerm =  "/?";
+            return new Promise(async (resolve, reject) => {
+                let searchTerm = "/?";
                 for (let i = 0; i < searchKeys.length; i++) {
                     searchTerm += `term${i}=${searchKeys[i]}&`
                 }
                 console.log(searchTerm);
                 let results = await fetch(`http://localhost:8081/api/search${searchTerm}`);
+                
+                
                 results = await results.json();
-                console.log(results);
-                if (results.length != 0) {
-                    console.log("json parse is valid result");
-                    resolve(results);
-                } else {
-                    resolve([]);
-                }
-            }) 
+                
+                console.log("json parse is valid result");
+                resolve(results);
+                
+            })
         }
 
         async function fillOutSearchResults() {
@@ -47,51 +46,80 @@
             // for each loop here with data
 
             let searchItems = document.getElementById('SearchItems');
-            if (data.length != 0) {
+            if (Object.keys(data) != 0) {
                 console.log("we have search result");
-                
+                console.log(data);
 
                 searchItems.innerHTML = "";
 
+                let RowItems = [];
+
                 data.forEach(element => {
-                    let row = document.createElement('li');
+                    let row = document.createElement('div');
+                    row.classList += "SearchResultItem";
+                    row.style.animationPlayState = "paused";
+                    RowItems.push(row)
                     let link = document.createElement('a');
                     link.href = element[0];
                     link.innerText = element[1];
                     row.appendChild(link);
                     searchItems.appendChild(row);
                 });
+
+                delayAnimation(RowItems, 100);
             } else {
                 console.log("we hit the error check");
                 searchItems.innerHTML = "<h3>We didnt find anything please try again ;)</h3>";
             }
-            
+
         }
 
         function clearSearch() {
             document.getElementById('SearchItems').innerHTML = "";
         }
-    </script>
+        
+        function delayAnimation(RowItems, delayFactor) {
+            for (let i = 0; i < RowItems.length; i++) {
+                setTimeout((RowItems, i) => {
+                    RowItems[i].style.animationPlayState = "running";
+                }, delayFactor * i, RowItems, i)
+            }
+        }
+    </script>   
 </head>
 
 <body>
-
-    <h2>Search the CIS Department Web Pages</h2>
-
-    <form id="SearchForm"> <!--  method="GET" action="http://localhost:8080/api/search"> -->
-
-        <input type="text" id="searchkey" name="searchkey" size="36" maxlength="48" />
-        <strong>Keyword or phrase</strong>
-
-        <p>
-            <button type="button" onclick="fillOutSearchResults()">Submit</button>
-            <input onclick="clearSearch()" type="reset" value="Clear the form" />
-        </p>
-    </form>
-
-    <div>
-        <ul id="SearchItems">
+     <header>
+      <img class="logo" src="images/CIS-Logo.png" alt="logo">
+      <nav>
+        <ul class="nav_links">
+            <li><a href="/"> <span class="button">Home</span></a></li>
+            <!--<a href="/search.html"> <span class="button">Search Page</span></a>-->
         </ul>
+      </nav>
+      <a class="cta" href="/search.html"><button>Search</button></a>
+    </header> 
+    <div class="FormHolder">
+        <div class="Form">
+            <h2>Search the CIS Department Web Pages</h2>
+
+            <form id="SearchForm">
+                <!--  method="GET" action="http://localhost:8080/api/search"> -->
+
+                <p>
+                    <strong>Keyword or phrase</strong>
+                </p>
+                <p>
+                    <input type="text" id="searchkey" name="searchkey" size="36" maxlength="48" />
+                </p>
+                <p>
+                    <button type="button" onclick="fillOutSearchResults()">Submit</button>
+                    <input class="clearTheForm" onclick="clearSearch()" type="reset" value="Clear the form" />
+                </p>
+            </form>
+        </div>
+        <div id="SearchItems">
+        </div>
     </div>
 
 </body>

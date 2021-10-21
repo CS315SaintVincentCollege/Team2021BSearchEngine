@@ -1,3 +1,4 @@
+
 @charset "utf-8";
 
 body {
@@ -63,4 +64,49 @@ button{
 
 button:hover{
   background-color: rgba(0,136,169,0.8);
+
+body div {
+    box-sizing: border-box;
+    width: max-content;
+    text-align: center;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5 {
+    margin: 0;
+}
+
+.FormHolder {
+    margin: 0 auto;
+}
+
+#SearchForm {
+    margin: 0 auto;
+}
+
+.SearchResultItem {
+    width: 100%;
+    text-align: left;
+    animation: SlideIn 1500ms ease-out 0s 1;
+}
+
+
+
+#SearchItems {
+    width: 100%;
+}
+
+@keyframes SlideIn {
+    0% {
+        transform: translate(-100vw);
+    }
+
+    100% {
+        transform: translate(0vw);
+    }
+
 }

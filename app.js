@@ -37,7 +37,7 @@ app.get('/api/search/', async (request, resolution)=>{
         return;
     }
 
-    let result = await SearchForKeyword('testFile.txt', queryParams);
+    let result = await SearchForKeyword('/www/cgi-bin/keywordfile3', queryParams);
 
     resolution.send(result);
 });

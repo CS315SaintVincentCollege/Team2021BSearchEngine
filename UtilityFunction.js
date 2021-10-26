@@ -15,7 +15,7 @@ function SearchForKeyword(fileName, KeywordArray) {
         
         //async call to read each line of file
         inputFile.on('line', (line, lineCount, byteCount) => {
-            
+                        
             //split out keywords
             let lineKeywords = line.split('%');
             
@@ -27,7 +27,6 @@ function SearchForKeyword(fileName, KeywordArray) {
                 
                 //loop though every keyword and check for matches
                 for (let j = 0; j < KeywordArray.length; j++) {
-
                     //if the keyword matches the list of keywords add line to array and break
                     if (lineKeywords[i].indexOf(KeywordArray[j]) != -1 && breakout) {
                         console.log(`Match Found with ${lineKeywords[i] == KeywordArray[j]} with ${lineKeywords[i]}`);
@@ -48,6 +47,7 @@ function SearchForKeyword(fileName, KeywordArray) {
         }).on('end', ()=>{
             //end of keywords file hit returning anything that was matched
             //with searching done resolve promise
+            console.log(MatchesArray);
             resolve(MatchesArray);
         })
     });

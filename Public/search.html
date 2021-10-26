@@ -29,7 +29,7 @@
                     searchTerm += `term${i}=${searchKeys[i]}&`
                 }
                 console.log(searchTerm);
-                let results = await fetch(`http://localhost:8081/api/search${searchTerm}`);
+                let results = await fetch(`http://localhost:3002/api/search${searchTerm}`);
                 
                 
                 results = await results.json();
@@ -111,7 +111,7 @@
             <h2>Search the CIS Department Web Pages</h2>
 
             <form id="SearchForm">
-                <!--  method="GET" action="http://localhost:8080/api/search"> -->
+                <!--  method="GET" action="http://localhost:3002/api/search"> -->
 
                 <p>
                     <strong>Keyword or phrase</strong>

@@ -53,4 +53,4 @@ app.get('/images/:name', (request, resolution)=>{
     resolution.send(fileData);
 })
 
-app.listen(8081);
+app.listen(3002);

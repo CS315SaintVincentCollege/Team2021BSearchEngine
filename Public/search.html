@@ -26,9 +26,15 @@
             return new Promise(async (resolve, reject) => {
                 let searchTerm = "/?";
                 for (let i = 0; i < searchKeys.length; i++) {
-                    searchTerm += `term${i}=${searchKeys[i]}&`
+
+                    //Encode searchKeys and append. Accounts for special characters in URL.
+                    let encodedSearchKey = encodeURIComponent(searchKeys[i]);
+
+                    searchTerm += `term${i}=${encodedSearchKey}&`
                 }
+                
                 console.log(searchTerm);
+
                 let results = await fetch(`http://localhost:3002/api/search${searchTerm}`);
                 
                 

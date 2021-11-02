@@ -29,13 +29,13 @@ function SearchForKeyword(fileName, KeywordArray) {
                 for (let j = 0; j < KeywordArray.length; j++) {
                     //if the keyword matches the list of keywords add line to array and break
                     if (lineKeywords[i].indexOf(KeywordArray[j]) != -1 && breakout) {
-                        console.log(`Match Found with ${lineKeywords[i] == KeywordArray[j]} with ${lineKeywords[i]}`);
+                        //console.log(`Match Found with ${lineKeywords[i] == KeywordArray[j]} with ${lineKeywords[i]}`);
                         //we got a hit, add the while line to the array
                         let formattedLine = lineKeywords[0].split('|');
                         lineKeywords.shift();
                         let fullLine = formattedLine.concat(lineKeywords);
                         MatchesArray.push(fullLine);
-                        console.log(fullLine);
+                        //console.log(fullLine);
                         breakout = false;
                     }
                 }
@@ -47,7 +47,7 @@ function SearchForKeyword(fileName, KeywordArray) {
         }).on('end', ()=>{
             //end of keywords file hit returning anything that was matched
             //with searching done resolve promise
-            console.log(MatchesArray);
+            //console.log(MatchesArray);
             resolve(MatchesArray);
         })
     });

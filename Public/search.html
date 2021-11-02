@@ -60,16 +60,18 @@
 
                 let RowItems = [];
 
-                data.forEach(element => {
-                    let row = document.createElement('div');
-                    row.classList += "SearchResultItem";
-                    row.style.animationPlayState = "paused";
-                    RowItems.push(row)
-                    let link = document.createElement('a');
-                    link.href = element[0];
-                    link.innerText = element[1];
-                    row.appendChild(link);
-                    searchItems.appendChild(row);
+                data.forEach(element, index => {
+                    if (index < 15) {
+                        let row = document.createElement('div');
+                        row.classList += "SearchResultItem";
+                        row.style.animationPlayState = "paused";
+                        RowItems.push(row)
+                        let link = document.createElement('a');
+                        link.href = element[0];
+                        link.innerText = element[1];
+                        row.appendChild(link);
+                        searchItems.appendChild(row);
+                    }
                 });
 
                 delayAnimation(RowItems, 100);

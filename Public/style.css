@@ -100,13 +100,15 @@ body {
 .SearchResultItem {
     width: 100%;
     text-align: left;
-    padding: 0.5em;
+    padding: 0.5em 0;
     font-size: 1.5em;
 }
 
 #SearchItems {
     width: 100%;
+  max-width: 100vw;
 }
+
 
 .clearTheForm{
   padding: 9px 25px;

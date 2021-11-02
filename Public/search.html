@@ -69,7 +69,10 @@
                         let link = document.createElement('a');
                         link.href = element[0];
                         link.innerText = element[1];
+                        let tinyLink = document.createElement('div');
+                        tinyLink.innerHTML = `SourceURL: ${element[0]}`;
                         row.appendChild(link);
+                        row.appendChild(tinyLink);
                         searchItems.appendChild(row);
                     }
                 });

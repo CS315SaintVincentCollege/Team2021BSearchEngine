@@ -2,12 +2,15 @@
 const express = require('express');
 const SearchForKeyword = require('./UtilityFunction.js').SearchForKeyword;
 const fs = require('fs');
+const port = 3002;
 
 let app = express();
 
 console.clear();
 
 /***The following are routes used in the app***/
+
+//The old route needed should be the actual api hit everything else should be handled by the apache server
 
 //Route for the home page.
 app.get('/', (request, resolution)=>{
@@ -53,4 +56,5 @@ app.get('/images/:name', (request, resolution)=>{
     resolution.send(fileData);
 })
 
-app.listen(3002);
+app.listen(port);
+console.log(`Now running on port: ${port}`);

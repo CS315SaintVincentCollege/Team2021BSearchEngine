@@ -51,7 +51,7 @@ app.get('/images/:name', (request, resolution)=>{
     let filename = request.params.name;
     let fileData = fs.readFileSync('./Images/' + filename);
 
-    console.log(`filename ${filename}`);
+    //console.log(`filename ${filename}`);
     
     resolution.send(fileData);
 })

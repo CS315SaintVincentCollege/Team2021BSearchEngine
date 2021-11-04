@@ -12,7 +12,7 @@ Extra Information:
 The web server is within the CIS Linux server at /www/Team2021B and listens on port 3002. The keywords file that gets searched is at /www/cgi-bin/keywordfile3 on the CIS Linux server.
 
 To run the web server:
-Ensure that you are in the correct folder with our search engine and run: npm run start
-If that fails run to install our node packages and libraries: npm install (or npm i)
-With this running, use a browser and type in: cis.stvincent.edu:3002
+Ensure that you are in the correct folder with our search engine and run: `npm run start`
+If that fails run to install our node packages and libraries: `npm install` (or npm i)
+With this running, use a browser and type in: http://cis.stvincent.edu:3002
 You will be defaultly placed onto the home page of the search engine project.
